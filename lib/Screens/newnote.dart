@@ -61,7 +61,7 @@ class _AddNoteState extends State<AddNote> {
                         child: TextFormField(
                           maxLines: 20,
                           decoration:
-                              InputDecoration.collapsed(hintText: "Note"),
+                              const InputDecoration.collapsed(hintText: "Note"),
                           style: TextStyle(
                               fontSize: 24,
                               // fontWeight: FontWeight.bold,

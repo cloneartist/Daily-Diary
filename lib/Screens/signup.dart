@@ -1,9 +1,7 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:daily_diary/Screens/login.dart';
 import 'package:daily_diary/Screens/note_screen.dart';
-import 'package:daily_diary/Screens/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:daily_diary/Models/shared.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

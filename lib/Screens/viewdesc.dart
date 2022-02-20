@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
 class View extends StatefulWidget {
   // View({Key? key}) : super(key: key);
   late Map? data;
   late DocumentReference ref;
-  View(this.data, this.ref);
+  View(this.data, this.ref, {Key? key}) : super(key: key);
   @override
   _ViewState createState() => _ViewState();
 }
@@ -62,14 +60,12 @@ class _ViewState extends State<View> {
                           fontWeight: FontWeight.bold,
                           color: Colors.blue),
                     ),
-                    Container(
-                      child: Text(
-                        "${widget.data!['description']}",
-                        style: TextStyle(
-                            fontSize: 24,
-                            // fontWeight: FontWeight.bold,
-                            color: Colors.blue),
-                      ),
+                    Text(
+                      "${widget.data!['description']}",
+                      style: TextStyle(
+                          fontSize: 24,
+                          // fontWeight: FontWeight.bold,
+                          color: Colors.blue),
                     ),
                   ],
                 )
