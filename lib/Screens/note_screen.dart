@@ -23,7 +23,7 @@ class _NoteScreenState extends State<NoteScreen> {
     // var name = user!.displayName;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Your Notes"),
+        title: Text("Your diary"),
         actions: [
           Row(
             children: [
