@@ -1,6 +1,14 @@
 // import 'package:firebase_auth/firebase_auth.dart';
+import 'package:daily_diary/Screens/note_screen.dart';
+import 'package:daily_diary/Screens/signup.dart';
+import 'package:daily_diary/Services/db.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:daily_diary/Models/shared.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+FirebaseFirestore firestore = FirebaseFirestore.instance;
+FirebaseAuth auth = FirebaseAuth.instance;
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -13,6 +21,8 @@ class _LoginState extends State<Login> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool loading = false;
 
+  final auth = FirebaseAuth.instance;
+  late UserCredential user;
   late String email, password;
 
   @override
@@ -40,7 +50,7 @@ class _LoginState extends State<Login> {
                     height: 10,
                   ),
                   const Text(
-                    "Welcome To\n Daily Diary",
+                    "Welcome Back To\n       Daily Diary",
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
                   // SizedBox(height: 50.0),
@@ -52,7 +62,9 @@ class _LoginState extends State<Login> {
                     decoration: textInputDecoration.copyWith(
                       labelText: 'Enter Your Email Address',
                     ),
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      email = value;
+                    },
                   ),
                   const SizedBox(height: 20.0),
                   TextFormField(
@@ -63,7 +75,9 @@ class _LoginState extends State<Login> {
                     decoration: textInputDecoration.copyWith(
                       labelText: 'Enter Your Password',
                     ),
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      password = value;
+                    },
                   ),
                   const SizedBox(height: 40.0),
                   ElevatedButton.icon(
@@ -78,23 +92,34 @@ class _LoginState extends State<Login> {
                     ),
                     // padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                     onPressed: () async {
+                      // print("ji");
                       if (formKey.currentState!.validate()) {
                         setState(() {
                           //loading = true;
                         });
                         try {
-                          // UserCredential user = await FirebaseAuth.instance
-                          // .signInWithEmailAndPassword(
-                          //     email: email, password: password);
-                          // print(user);
+                          print("$email+$password");
+                          print("ji");
+                          user = await auth.signInWithEmailAndPassword(
+                              email: email, password: password);
+                          print(user);
                           // Navigator.pushNamed(context, '/home');
+                          await signin(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => NoteScreen()));
                         } catch (e) {
-                          // print(e);
+                          print(e);
                           String error = e.toString();
 
                           // Navigator.pushNamed(context, '/signup');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUp()));
                           setState(() {
-                            loading = false;
+                            // loading = false;
                           });
                           final loginerror = SnackBar(content: Text(error));
                           ScaffoldMessenger.of(context)
@@ -113,6 +138,8 @@ class _LoginState extends State<Login> {
                   TextButton(
                       onPressed: () {
                         //Navigator.pushNamed((context), '/signup');
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignUp()));
                         setState(() {});
                       },
                       child: const Text("New User? Sign Up")),
@@ -126,5 +153,13 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  // void signIn(String email,String password)async{
+
+  // }
+
+  void onulya() {
+    print(user);
   }
 }
