@@ -30,12 +30,12 @@ class _LoginState extends State<Login> {
                   const Spacer(
                     flex: 1,
                   ),
-                  // SizedBox(height: 80.0),
-                  // const CircleAvatar(
-                  //   radius: 50,
-                  //   backgroundColor: Colors.blue,
+                  SizedBox(height: 80.0),
+                  const CircleAvatar(
+                    radius: 50,
+                     backgroundColor: Colors.blue,
 
-                  // ), //Use Diary app logo
+                   ), //Use Diary app logo
                   const SizedBox(
                     height: 10,
                   ),
