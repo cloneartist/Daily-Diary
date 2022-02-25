@@ -30,7 +30,8 @@
 .pub-cache/
 .pub/
 /build/
-
+firebase_options.dart
+flutterfire.bat
 # Web related
 lib/generated_plugin_registrant.dart
 

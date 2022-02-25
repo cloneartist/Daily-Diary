@@ -1,7 +1,6 @@
 // import 'package:firebase_auth/firebase_auth.dart';
+import 'package:daily_diary/Screens/login.dart';
 import 'package:daily_diary/Screens/note_screen.dart';
-import 'package:daily_diary/Screens/signup.dart';
-import 'package:daily_diary/Services/db.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:daily_diary/Models/shared.dart';
@@ -10,20 +9,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 FirebaseAuth auth = FirebaseAuth.instance;
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool loading = false;
 
-  final auth = FirebaseAuth.instance;
-  late UserCredential user;
-  late String email, password;
+  final _auth = FirebaseAuth.instance;
+
+  late String email, password, name;
 
   @override
   Widget build(BuildContext context) {
@@ -40,21 +39,33 @@ class _LoginState extends State<Login> {
                   const Spacer(
                     flex: 1,
                   ),
-                  SizedBox(height: 80.0),
-                  const CircleAvatar(
-                    radius: 50,
-                     backgroundColor: Colors.blue,
+                  // SizedBox(height: 80.0),
+                  // const CircleAvatar(
+                  //   radius: 50,
+                  //   backgroundColor: Colors.blue,
 
-                   ), //Use Diary app logo
+                  // ), //Use Diary app logo
                   const SizedBox(
                     height: 10,
                   ),
                   const Text(
-                    "Welcome Back To\n       Daily Diary",
+                    "Welcome To\n Daily Diary",
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
                   // SizedBox(height: 50.0),
                   const Spacer(flex: 1),
+                  TextFormField(
+                    validator: (val) => val!.isEmpty || val.length < 1
+                        ? 'Enter your name'
+                        : null,
+                    decoration: textInputDecoration.copyWith(
+                      labelText: 'Enter Your Name',
+                    ),
+                    onChanged: (value) {
+                      name = value;
+                    },
+                  ),
+                  const SizedBox(height: 20.0),
                   TextFormField(
                     validator: (val) => val!.isEmpty || !(val.contains('@'))
                         ? 'Enter a valid email address'
@@ -79,6 +90,7 @@ class _LoginState extends State<Login> {
                       password = value;
                     },
                   ),
+
                   const SizedBox(height: 40.0),
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
@@ -100,11 +112,16 @@ class _LoginState extends State<Login> {
                         try {
                           print("$email+$password");
                           print("ji");
-                          user = await auth.signInWithEmailAndPassword(
-                              email: email, password: password);
-                          print(user);
+                          UserCredential res =
+                              await _auth.createUserWithEmailAndPassword(
+                                  email: email, password: password);
+
+                          User? user = res.user;
+                          user!.updateDisplayName(name);
+
+                          print(res);
                           // Navigator.pushNamed(context, '/home');
-                          await signin(context);
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -114,10 +131,10 @@ class _LoginState extends State<Login> {
                           String error = e.toString();
 
                           // Navigator.pushNamed(context, '/signup');
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUp()));
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => SignUp()));
                           setState(() {
                             // loading = false;
                           });
@@ -128,7 +145,7 @@ class _LoginState extends State<Login> {
                       }
                     },
                     label: const Text(
-                      "Login",
+                      "Sign Up",
                       style: TextStyle(color: Colors.white, fontSize: 15),
                     ),
                   ),
@@ -139,10 +156,10 @@ class _LoginState extends State<Login> {
                       onPressed: () {
                         //Navigator.pushNamed((context), '/signup');
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => SignUp()));
+                            MaterialPageRoute(builder: (context) => Login()));
                         setState(() {});
                       },
-                      child: const Text("New User? Sign Up")),
+                      child: const Text("Existing User? Login")),
                   const Spacer(
                     flex: 1,
                   )
@@ -158,8 +175,4 @@ class _LoginState extends State<Login> {
   // void signIn(String email,String password)async{
 
   // }
-
-  void onulya() {
-    print(user);
-  }
 }
