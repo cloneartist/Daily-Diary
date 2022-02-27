@@ -1,4 +1,4 @@
-import 'package:daily_diary/Screens/all.dart';
+import 'package:daily_diary/Screens/diary.dart';
 import 'package:daily_diary/Screens/login.dart';
 import 'package:daily_diary/Screens/newnote.dart';
 import 'package:daily_diary/Screens/note_screen.dart';
@@ -29,7 +29,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const All(),
+      
+      home: const Diary(),
+      // home: const Diary(),
       // home: const NoteScreen(),
     );
   }
