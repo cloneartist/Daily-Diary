@@ -18,8 +18,8 @@ class All extends StatelessWidget {
               ListTile(
                 
                 
-                title: Text("Codesinsider.com", style: TextStyle(color: Colors.white),),
-                subtitle: Text("Today I was very busy. it's demo ", style: TextStyle(color: Colors.white),),
+                title: Text("You can't spell america without erica.", style: TextStyle(color: Colors.white),),
+                subtitle: Text("Mornings are for coffee and contemplation.", style: TextStyle(color: Colors.white),),
               ),
                     Row(
                             mainAxisAlignment: MainAxisAlignment.end,
