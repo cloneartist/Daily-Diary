@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      home: const Reading(),
+      home: const Login(),
+      // home: const Reading(),
       // home: const Diary(),
       // home: const NoteScreen(),
     );

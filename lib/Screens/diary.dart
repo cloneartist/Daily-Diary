@@ -48,12 +48,16 @@ Widget Cardwidget() {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextButton(
-                  child: Text(
-                    "Date: Time: ",
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  TextButton.icon(
                   onPressed: () {},
+                  icon: Icon(
+                    Icons.date_range,
+                    color: Colors.green,
+                  ),
+                  label: Text(
+                    "Date: & Time: ",
+                    style: TextStyle(color: Colors.green),
+                  ),
                 ),
               ],
             ),
@@ -62,33 +66,41 @@ Widget Cardwidget() {
               child: ListTile(
                 title: Text(
                   "You can't spell america without erica.",
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(color: Colors.pink, fontSize: 18),
                 ),
                 subtitle: Text(
                   "Mornings are for coffee and contemplation.",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.blue),
                 ),
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextButton(
-                  child: Text(
-                    "READ",
-                    style: TextStyle(color: Colors.white),
-                  ),
+                 TextButton.icon(
                   onPressed: () {},
+                  label: Text(
+                    "Add to Fav",
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  icon: Icon(
+                    Icons.favorite_border_outlined,
+                    color: Colors.red,
+                  ),
                 ),
                 SizedBox(
                   width: 8,
                 ),
-                TextButton(
-                  child: Text(
-                    "Delete",
-                    style: TextStyle(color: Colors.white),
-                  ),
+               TextButton.icon(
                   onPressed: () {},
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.blue,
+                  ),
+                  label: Text(
+                    "Delete",
+                    style: TextStyle(color: Colors.blue),
+                  ),
                 ),
                 SizedBox(
                   width: 8,
@@ -97,7 +109,7 @@ Widget Cardwidget() {
             ),
           ],
         ),
-        color: Colors.green,
+        color: Colors.white,
       ),
     ),
   );

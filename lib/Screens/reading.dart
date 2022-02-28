@@ -6,7 +6,6 @@ class Reading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       appBar: AppBar(
         backgroundColor: Colors.pink,
         title: Text('What we know is a drop, what we don\'t know is an ocean'),
@@ -34,24 +33,26 @@ Widget Cardwidget() {
         ],
       ),
       child: Card(
-
         child: ListView(
-          
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-
-                TextButton(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(40, 20, 0, 0),
-                    child: Text(
-                      "Date: Time: ",
-                      style: TextStyle(color: Colors.pink[600],fontSize: 20),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(40,20,0,0),
+                  child: TextButton.icon(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.date_range,
+                      color: Colors.pink[600],
+                    ),
+                    label: Text(
+                      "Date: & Time: ",
+                      style: TextStyle(color: Colors.pink[600], fontSize: 20),
                     ),
                   ),
-                  onPressed: () {},
                 ),
+             
               ],
             ),
             Padding(
