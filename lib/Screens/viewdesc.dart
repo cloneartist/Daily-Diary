@@ -32,7 +32,7 @@ class _ViewState extends State<View> {
                       },
                       child: Icon(
                         Icons.arrow_back,
-                        color: Colors.blue,
+                        color: Colors.black,
                       ),
                       style: ElevatedButton.styleFrom(
                           elevation: 0, primary: Colors.white),
@@ -46,26 +46,45 @@ class _ViewState extends State<View> {
                         color: Colors.white,
                       ),
                       style: ElevatedButton.styleFrom(
-                          elevation: 0, primary: Colors.black),
-                    )
+                          elevation: 1,
+                          primary: Colors.black,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10))),
+                    ),
                   ],
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "${widget.data!['title']}",
-                      style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
+                          child: Text(
+                            "${widget.data!['title']}",
+                            style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      "${widget.data!['description']}",
-                      style: TextStyle(
-                          fontSize: 24,
-                          // fontWeight: FontWeight.bold,
-                          color: Colors.blue),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
+                          child: Text(
+                            "${widget.data!['description']}",
+                            style: TextStyle(
+                                fontSize: 24,
+                                // fontWeight: FontWeight.bold,
+                                color: Colors.blue),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 )

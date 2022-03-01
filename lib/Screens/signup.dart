@@ -44,7 +44,6 @@ class _SignUpState extends State<SignUp> {
                   //   radius: 50,
                   //   backgroundColor: Colors.blue,
 
-                  // ), //Use Diary app logo
                   const SizedBox(
                     height: 10,
                   ),
@@ -94,6 +93,7 @@ class _SignUpState extends State<SignUp> {
                   const SizedBox(height: 40.0),
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
+                      primary: Colors.black,
                       shape: const StadiumBorder(),
                       padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
                     ),
@@ -159,7 +159,10 @@ class _SignUpState extends State<SignUp> {
                             MaterialPageRoute(builder: (context) => Login()));
                         setState(() {});
                       },
-                      child: const Text("Existing User? Login")),
+                      child: const Text(
+                        "Existing User? Login",
+                        style: TextStyle(color: Colors.black),
+                      )),
                   const Spacer(
                     flex: 1,
                   )

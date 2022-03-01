@@ -30,7 +30,7 @@ class _AddNoteState extends State<AddNote> {
                       },
                       child: Icon(
                         Icons.arrow_back,
-                        color: Colors.blue,
+                        color: Colors.black,
                       ),
                       style: ElevatedButton.styleFrom(
                           elevation: 0, primary: Colors.white),
@@ -41,33 +41,42 @@ class _AddNoteState extends State<AddNote> {
                       },
                       child: Text("Save"),
                       style: ElevatedButton.styleFrom(
-                          elevation: 0, primary: Colors.black),
-                    )
+                          elevation: 1,
+                          primary: Colors.black,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10))),
+                    ),
                   ],
                 ),
                 Form(
                   child: Column(
                     children: [
-                      TextFormField(
-                        decoration:
-                            InputDecoration.collapsed(hintText: "Title"),
-                        style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue),
-                        onChanged: (val) => {title = val, print(title)},
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
+                        child: TextFormField(
+                          decoration: InputDecoration.collapsed(
+                              hintText: "Enter Title"),
+                          style: TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                          onChanged: (val) => {title = val, print(title)},
+                        ),
                       ),
                       Container(
-                        child: TextFormField(
-                          maxLines: 20,
-                          decoration:
-                              const InputDecoration.collapsed(hintText: "Note"),
-                          style: TextStyle(
-                              fontSize: 24,
-                              // fontWeight: FontWeight.bold,
-                              color: Colors.blue),
-                          onChanged: (val) =>
-                              {description = val, print(description)},
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
+                          child: TextFormField(
+                            maxLines: 20,
+                            decoration: const InputDecoration.collapsed(
+                                hintText: "What's on your mind?"),
+                            style: TextStyle(
+                                fontSize: 24,
+                                // fontWeight: FontWeight.bold,
+                                color: Colors.blue),
+                            onChanged: (val) =>
+                                {description = val, print(description)},
+                          ),
                         ),
                       ),
                     ],
