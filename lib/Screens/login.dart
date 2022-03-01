@@ -96,7 +96,6 @@ class _LoginState extends State<Login> {
                               MaterialPageRoute(
                                   builder: (context) => const NoteScreen()));
                         } catch (e) {
-                          print(e);
                           String error = e.toString();
                           final loginerror = SnackBar(content: Text(error));
                           ScaffoldMessenger.of(context)

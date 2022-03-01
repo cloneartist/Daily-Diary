@@ -119,8 +119,7 @@ class _NoteScreenState extends State<NoteScreen> {
                                         color: Colors.black, fontSize: 30),
                                   ),
                                   subtitle: Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(4.0, 4, 4, 3),
+                                    padding: const EdgeInsets.all(2.0),
                                     child: AutoSizeText(
                                       "${data['description']}",
                                       style:
@@ -133,17 +132,23 @@ class _NoteScreenState extends State<NoteScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  TextButton.icon(
-                                    autofocus: false,
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.date_range,
-                                      color: Colors.black,
-                                    ),
-                                    label: Text(
-                                      date,
-                                      style:
-                                          const TextStyle(color: Colors.black),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(1.0, 4, 4, 4),
+                                    child: TextButton.icon(
+                                      autofocus: false,
+                                      onPressed: () {},
+                                      icon: const Center(
+                                        child: Icon(
+                                          Icons.date_range,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      label: Text(
+                                        date,
+                                        style: const TextStyle(
+                                            color: Colors.black),
+                                      ),
                                     ),
                                   ),
                                 ],
