@@ -82,6 +82,7 @@ class _LoginState extends State<Login> {
                   const SizedBox(height: 40.0),
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
+                      primary: Colors.black,
                       shape: const StadiumBorder(),
                       padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
                     ),
@@ -142,7 +143,10 @@ class _LoginState extends State<Login> {
                             MaterialPageRoute(builder: (context) => SignUp()));
                         setState(() {});
                       },
-                      child: const Text("New User? Sign Up")),
+                      child: const Text(
+                        "New User? Sign Up",
+                        style: TextStyle(color: Colors.black),
+                      )),
                   const Spacer(
                     flex: 1,
                   )
@@ -159,7 +163,11 @@ class _LoginState extends State<Login> {
 
   // }
 
-  void onulya() {
-    print(user);
+  void createSnackBar(String message) {
+    final snackBar =
+        SnackBar(content: new Text(message), backgroundColor: Colors.red);
+
+    // Find the Scaffold in the Widget tree and use it to show a SnackBar!
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
