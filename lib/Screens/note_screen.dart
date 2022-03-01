@@ -119,7 +119,8 @@ class _NoteScreenState extends State<NoteScreen> {
                                         color: Colors.black, fontSize: 30),
                                   ),
                                   subtitle: Padding(
-                                    padding: const EdgeInsets.all(2.0),
+                                    padding:
+                                        const EdgeInsets.fromLTRB(4.0, 4, 4, 3),
                                     child: AutoSizeText(
                                       "${data['description']}",
                                       style:
