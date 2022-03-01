@@ -10,15 +10,15 @@ class AddNote extends StatefulWidget {
 }
 
 class _AddNoteState extends State<AddNote> {
-  var title;
-  var description;
+  String title = "";
+  String description = "";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             child: Column(
               children: [
                 Row(
@@ -28,7 +28,7 @@ class _AddNoteState extends State<AddNote> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back,
                         color: Colors.black,
                       ),
@@ -39,7 +39,7 @@ class _AddNoteState extends State<AddNote> {
                       onPressed: () {
                         add();
                       },
-                      child: Text("Save"),
+                      child: const Text("Save"),
                       style: ElevatedButton.styleFrom(
                           elevation: 1,
                           primary: Colors.black,
@@ -54,29 +54,26 @@ class _AddNoteState extends State<AddNote> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
                         child: TextFormField(
-                          decoration: InputDecoration.collapsed(
+                          decoration: const InputDecoration.collapsed(
                               hintText: "Enter Title"),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 32,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
-                          onChanged: (val) => {title = val, print(title)},
+                          onChanged: (val) => {
+                            title = val,
+                          },
                         ),
                       ),
-                      Container(
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
-                          child: TextFormField(
-                            maxLines: 20,
-                            decoration: const InputDecoration.collapsed(
-                                hintText: "What's on your mind?"),
-                            style: TextStyle(
-                                fontSize: 24,
-                                // fontWeight: FontWeight.bold,
-                                color: Colors.blue),
-                            onChanged: (val) =>
-                                {description = val, print(description)},
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
+                        child: TextFormField(
+                          maxLines: 20,
+                          decoration: const InputDecoration.collapsed(
+                              hintText: "What's on your mind?"),
+                          style:
+                              const TextStyle(fontSize: 24, color: Colors.blue),
+                          onChanged: (val) => {description = val},
                         ),
                       ),
                     ],

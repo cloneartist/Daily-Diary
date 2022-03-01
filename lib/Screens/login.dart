@@ -1,4 +1,3 @@
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:daily_diary/Screens/note_screen.dart';
 import 'package:daily_diary/Screens/signup.dart';
 import 'package:daily_diary/Services/db.dart';
@@ -40,12 +39,6 @@ class _LoginState extends State<Login> {
                   const Spacer(
                     flex: 1,
                   ),
-                  // SizedBox(height: 80.0),
-                  // const CircleAvatar(
-                  //   radius: 50,
-                  //   backgroundColor: Colors.blue,
-
-                  // ), //Use Diary app logo
                   const SizedBox(
                     height: 10,
                   ),
@@ -53,7 +46,6 @@ class _LoginState extends State<Login> {
                     "Welcome Back To\n       Daily Diary",
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
-                  // SizedBox(height: 50.0),
                   const Spacer(flex: 1),
                   TextFormField(
                     validator: (val) => val!.isEmpty || !(val.contains('@'))
@@ -91,40 +83,28 @@ class _LoginState extends State<Login> {
                       color: Colors.white,
                       size: 25,
                     ),
-                    // padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                     onPressed: () async {
-                      // print("ji");
                       if (formKey.currentState!.validate()) {
-                        setState(() {
-                          //loading = true;
-                        });
+                        setState(() {});
                         try {
-                          print("$email+$password");
-                          print("ji");
                           user = await auth.signInWithEmailAndPassword(
                               email: email, password: password);
-                          print(user);
-                          // Navigator.pushNamed(context, '/home');
+
                           await signin(context);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => NoteScreen()));
+                                  builder: (context) => const NoteScreen()));
                         } catch (e) {
                           print(e);
                           String error = e.toString();
-
-                          // Navigator.pushNamed(context, '/signup');
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUp()));
-                          setState(() {
-                            // loading = false;
-                          });
                           final loginerror = SnackBar(content: Text(error));
                           ScaffoldMessenger.of(context)
                               .showSnackBar(loginerror);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUp()));
                         }
                       }
                     },
@@ -138,9 +118,10 @@ class _LoginState extends State<Login> {
                   ),
                   TextButton(
                       onPressed: () {
-                        //Navigator.pushNamed((context), '/signup');
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => SignUp()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUp()));
                         setState(() {});
                       },
                       child: const Text(
@@ -157,17 +138,5 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
-  }
-
-  // void signIn(String email,String password)async{
-
-  // }
-
-  void createSnackBar(String message) {
-    final snackBar =
-        SnackBar(content: new Text(message), backgroundColor: Colors.red);
-
-    // Find the Scaffold in the Widget tree and use it to show a SnackBar!
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

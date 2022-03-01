@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class View extends StatefulWidget {
   // View({Key? key}) : super(key: key);
-  late Map? data;
-  late DocumentReference ref;
-  View(this.data, this.ref, {Key? key}) : super(key: key);
+  final Map? data;
+  final DocumentReference ref;
+  const View(this.data, this.ref, {Key? key}) : super(key: key);
   @override
   _ViewState createState() => _ViewState();
 }
 
 class _ViewState extends State<View> {
-  var title;
-  var description;
+  String title = "";
+  String description = "";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             child: Column(
               children: [
                 Row(
@@ -30,7 +29,7 @@ class _ViewState extends State<View> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back,
                         color: Colors.black,
                       ),
@@ -41,7 +40,7 @@ class _ViewState extends State<View> {
                       onPressed: () {
                         delete();
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.delete_forever,
                         color: Colors.white,
                       ),
@@ -54,7 +53,6 @@ class _ViewState extends State<View> {
                   ],
                 ),
                 Column(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -63,7 +61,7 @@ class _ViewState extends State<View> {
                           padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
                           child: Text(
                             "${widget.data!['title']}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
@@ -78,10 +76,8 @@ class _ViewState extends State<View> {
                           padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
                           child: Text(
                             "${widget.data!['description']}",
-                            style: TextStyle(
-                                fontSize: 24,
-                                // fontWeight: FontWeight.bold,
-                                color: Colors.blue),
+                            style: const TextStyle(
+                                fontSize: 24, color: Colors.blue),
                           ),
                         ),
                       ],

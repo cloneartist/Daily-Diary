@@ -1,6 +1,5 @@
 import 'package:daily_diary/Screens/newnote.dart';
 import 'package:daily_diary/Screens/viewdesc.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,7 +11,6 @@ class NoteScreen extends StatefulWidget {
 
   @override
   _NoteScreenState createState() => _NoteScreenState();
-  // late final User user;
 }
 
 class _NoteScreenState extends State<NoteScreen> {
@@ -21,17 +19,17 @@ class _NoteScreenState extends State<NoteScreen> {
       .collection("users")
       .doc(FirebaseAuth.instance.currentUser!.uid)
       .collection("notes");
+  @override
   Widget build(BuildContext context) {
-    // var name = user!.displayName;
     return Scaffold(
-      backgroundColor: Color(0xffF6F6F6),
+      backgroundColor: const Color(0xffF6F6F6),
       appBar: AppBar(
         elevation: 0,
         foregroundColor: Colors.white,
-        backgroundColor: Color(0xffF6F6F6),
+        backgroundColor: const Color(0xffF6F6F6),
         automaticallyImplyLeading: false,
         title: Column(
-          children: [
+          children: const [
             AutoSizeText(
               "Your Diary",
               style: TextStyle(color: Colors.black, fontSize: 25),
@@ -46,16 +44,17 @@ class _NoteScreenState extends State<NoteScreen> {
                 child: ElevatedButton(
                   onPressed: () async {
                     try {
-                      // print(FirebaseAuth.instance.currentUser);
                       await FirebaseAuth.instance.signOut();
 
                       Navigator.pop(context);
                     } catch (e) {
-                      print(e);
+                      String error = e.toString();
+
+                      final loginerror = SnackBar(content: Text(error));
+                      ScaffoldMessenger.of(context).showSnackBar(loginerror);
                     }
-                    //         },
                   },
-                  child: Icon(Icons.logout),
+                  child: const Icon(Icons.logout),
                   style: ElevatedButton.styleFrom(
                       elevation: 1,
                       primary: Colors.black,
@@ -71,10 +70,10 @@ class _NoteScreenState extends State<NoteScreen> {
         backgroundColor: Colors.black,
         onPressed: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => AddNote()))
+              .push(MaterialPageRoute(builder: (context) => const AddNote()))
               .then((value) => setState(() {}));
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       body: FutureBuilder<QuerySnapshot>(
           future: ref.get(),
@@ -99,35 +98,14 @@ class _NoteScreenState extends State<NoteScreen> {
                           setState(() {});
                         });
                       },
-                      // child: Card(
-                      //   color: Colors.lightBlue,
-                      //   child: Column(
-                      //     children: [
-                      //       Text(
-                      //         "${data['title']}",
-                      //         style: TextStyle(
-                      //             fontSize: 32,
-                      //             fontWeight: FontWeight.bold,
-                      //             color: Colors.white),
-                      //       ),
-                      //       Container(
-                      //         alignment: Alignment.bottomRight,
-                      //         child: Text(
-                      //           "$dt",
-                      //           style: TextStyle(
-                      //               fontSize: 20, color: Colors.white),
-                      //         ),
-                      //       )
-                      //     ],
-                      //   ),
-                      // ),
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Card(
                           elevation: 2,
                           clipBehavior: Clip.antiAlias,
                           shape: RoundedRectangleBorder(
-                            side: BorderSide(color: Colors.black, width: 1),
+                            side:
+                                const BorderSide(color: Colors.black, width: 1),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: Column(
@@ -137,87 +115,44 @@ class _NoteScreenState extends State<NoteScreen> {
                                 child: ListTile(
                                   title: AutoSizeText(
                                     "${data['title']}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black, fontSize: 30),
                                   ),
                                   subtitle: Padding(
                                     padding: const EdgeInsets.all(2.0),
                                     child: AutoSizeText(
                                       "${data['description']}",
-                                      style: TextStyle(color: Colors.blue),
+                                      style:
+                                          const TextStyle(color: Colors.blue),
                                       maxLines: 1,
                                     ),
                                   ),
                                 ),
                               ),
-
-                              // Row(
-                              //   mainAxisAlignment: MainAxisAlignment.end,
-                              //   children: [
-                              //     Padding(
-                              //       padding: const EdgeInsets.all(8.0),
-                              //       child: RichText(
-                              //         text: TextSpan(
-                              //           children: [
-                              //             WidgetSpan(
-                              //               child: Center(
-                              //                   child: Icon(Icons.date_range,
-                              //                       size: 16)),
-                              //             ),
-                              //             TextSpan(
-                              //               text: " $date",
-                              //             ),
-                              //           ],
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ],
-                              // ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   TextButton.icon(
                                     autofocus: false,
                                     onPressed: () {},
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.date_range,
                                       color: Colors.black,
                                     ),
                                     label: Text(
                                       date,
-                                      style: TextStyle(color: Colors.black),
+                                      style:
+                                          const TextStyle(color: Colors.black),
                                     ),
                                   ),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  // TextButton.icon(
-                                  //   onPressed: () {},
-                                  //   label: Text(
-                                  //     "Add to Fav",
-                                  //     style: TextStyle(color: Colors.red),
-                                  //   ),
-                                  //   icon: Icon(
-                                  //     Icons.favorite_border_outlined,
-                                  //     color: Colors.red,
-                                  //   ),
-                                  // ),
+                                children: const [
                                   SizedBox(
                                     width: 8,
                                   ),
-                                  // TextButton.icon(
-                                  //   onPressed: () {},
-                                  //   icon: Icon(
-                                  //     Icons.delete,
-                                  //     color: Colors.blue,
-                                  //   ),
-                                  //   label: Text(
-                                  //     "Delete",
-                                  //     style: TextStyle(color: Colors.blue),
-                                  //   ),
-                                  // ),
                                   SizedBox(
                                     width: 8,
                                   )
@@ -231,39 +166,11 @@ class _NoteScreenState extends State<NoteScreen> {
                     );
                   });
             } else {
-              return Center(
+              return const Center(
                 child: Text("Loading"),
               );
             }
           }),
-      //
-      // Column(
-      //   // mainAxisAlignment: MainAxisAlignment.center,
-      //   children: [
-      //     Center(
-      //       child: Text(
-      //         // "Hey There $name ",
-      //         "name",
-      //         style: TextStyle(color: Colors.black),
-      //       ),
-      //     ),
-
-      //     ElevatedButton(
-      //         onPressed: () async {
-      //           print(user);
-      //           try {
-      //             // print(FirebaseAuth.instance.currentUser);
-      //             await FirebaseAuth.instance.signOut();
-
-      //             Navigator.pop(context);
-      //           } catch (e) {
-      //             print(e);
-      //           }
-      //         },
-      //         child: Text("LOGOUT"))
-      //   ],
-
-      // )
     );
   }
 }

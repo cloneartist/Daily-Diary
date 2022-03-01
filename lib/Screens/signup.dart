@@ -1,4 +1,3 @@
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:daily_diary/Screens/login.dart';
 import 'package:daily_diary/Screens/note_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -39,11 +38,6 @@ class _SignUpState extends State<SignUp> {
                   const Spacer(
                     flex: 1,
                   ),
-                  // SizedBox(height: 80.0),
-                  // const CircleAvatar(
-                  //   radius: 50,
-                  //   backgroundColor: Colors.blue,
-
                   const SizedBox(
                     height: 10,
                   ),
@@ -51,12 +45,10 @@ class _SignUpState extends State<SignUp> {
                     "Welcome To\n Daily Diary",
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                   ),
-                  // SizedBox(height: 50.0),
                   const Spacer(flex: 1),
                   TextFormField(
-                    validator: (val) => val!.isEmpty || val.length < 1
-                        ? 'Enter your name'
-                        : null,
+                    validator: (val) =>
+                        val!.isEmpty || val.isEmpty ? 'Enter your name' : null,
                     decoration: textInputDecoration.copyWith(
                       labelText: 'Enter Your Name',
                     ),
@@ -89,7 +81,6 @@ class _SignUpState extends State<SignUp> {
                       password = value;
                     },
                   ),
-
                   const SizedBox(height: 40.0),
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
@@ -102,16 +93,10 @@ class _SignUpState extends State<SignUp> {
                       color: Colors.white,
                       size: 25,
                     ),
-                    // padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
                     onPressed: () async {
-                      // print("ji");
                       if (formKey.currentState!.validate()) {
-                        setState(() {
-                          //loading = true;
-                        });
+                        setState(() {});
                         try {
-                          print("$email+$password");
-                          print("ji");
                           UserCredential res =
                               await _auth.createUserWithEmailAndPassword(
                                   email: email, password: password);
@@ -119,25 +104,13 @@ class _SignUpState extends State<SignUp> {
                           User? user = res.user;
                           user!.updateDisplayName(name);
 
-                          print(res);
-                          // Navigator.pushNamed(context, '/home');
-
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => NoteScreen()));
+                                  builder: (context) => const NoteScreen()));
                         } catch (e) {
-                          print(e);
                           String error = e.toString();
 
-                          // Navigator.pushNamed(context, '/signup');
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => SignUp()));
-                          setState(() {
-                            // loading = false;
-                          });
                           final loginerror = SnackBar(content: Text(error));
                           ScaffoldMessenger.of(context)
                               .showSnackBar(loginerror);
@@ -154,10 +127,10 @@ class _SignUpState extends State<SignUp> {
                   ),
                   TextButton(
                       onPressed: () {
-                        //Navigator.pushNamed((context), '/signup');
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Login()));
-                        setState(() {});
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Login()));
                       },
                       child: const Text(
                         "Existing User? Login",
@@ -174,8 +147,4 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
-
-  // void signIn(String email,String password)async{
-
-  // }
 }
