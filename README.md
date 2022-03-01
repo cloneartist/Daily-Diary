@@ -1,7 +1,7 @@
-# Daily_Diary(Daillo)
+# Daily Diary(Daillo)
 
 This is a simple diary app to enter daily diary notes.
-
+Visit the web version at: https://daillo.web.app
 
 
 ## Getting Started
