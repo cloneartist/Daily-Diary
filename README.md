@@ -1,6 +1,8 @@
-# daily_diary
+# Daily_Diary(Daillo)
 
-A new Flutter project.
+This is a simple diary app to enter daily diary notes.
+
+
 
 ## Getting Started
 
