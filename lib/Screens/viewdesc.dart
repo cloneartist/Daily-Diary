@@ -97,4 +97,10 @@ class _ViewState extends State<View> {
 
     Navigator.pop(context);
   }
+
+  void upd(var dex, var titlex) async {
+    await widget.ref.update({description: dex, title: titlex});
+
+    Navigator.pop(context);
+  }
 }
