@@ -2,7 +2,7 @@
     package="com.example.daily_diary">
    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="daily_diary"
+        android:label="Daillo"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
