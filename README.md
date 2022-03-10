@@ -11,6 +11,7 @@ DAILLO FEATURES
   Delete diaries
 
 Website Link [Daillo](https://daillo.web.app/)
+Apk download Link [Daillo App](https://github.com/cloneartist/Daily-Diary/raw/master/app-armeabi-v7a-release.apk)
   
 ## Team members
 1. Adith Pozhekadavil Anandhan [https://github.com/cloneartist]
