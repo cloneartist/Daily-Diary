@@ -51,21 +51,17 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Scaffold(
-      backgroundColor: Colors.pink,
-      body: Center(
-        child: Column(
-          children: [
-            Text('Daillo',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 28,
-                )),
-                
-          ],
+        child: Container(
+      height: 120.0,
+      width: 120.0,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('images/logo.png'),
+          fit: BoxFit.fill,
         ),
+        shape: BoxShape.circle,
       ),
-    ));
+    ),);
   }
 }
 
